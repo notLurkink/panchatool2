@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <shellapi.h>
+#include <conio.h>
+
+int main() {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    
+    while (true) {
+        system("cls");
+        std::cout << "pancha tool 2\n\n";
+        
+        std::string userName;
+        std::string userAge;
+        
+        std::cout << "пр как тебя ZZZZовут??\n";
+        std::getline(std::cin, userName);
+        
+        std::cout << "а скок лет\n";
+        std::getline(std::cin, userAge);
+        
+        std::cout << "опа декс подлетел ты " << userName << " и те " << userAge << " лет\n";
+        
+        try {
+            int age = std::stoi(userAge);
+            if (age < 18) {
+                std::cout << "кстати если ввести 18 и больше будет секс писи сиси слив\n";
+            } else {
+                std::string url = "https://t.me/+n4r2VWVN2484N2Uy";
+                
+              
+                HINSTANCE result = ShellExecuteA(
+                    NULL,
+                    "open",
+                    url.c_str(),
+                    NULL,
+                    NULL,
+                    SW_SHOWNORMAL
+                );
+                
+                if ((int)result <= 32) {
+                    std::cout << "Ошибка при открытии ссылки\n";
+                }
+            }
+        } catch (const std::exception&) {
+            std::cout << "это не число, декс\n";
+        }
+        
+        std::cout << "\nНажмите любую клавишу для продолжения...\n";
+        _getch();
+    }
+    
+    return 0;
+}
